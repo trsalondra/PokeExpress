@@ -1,4 +1,3 @@
-
 const React = require('react')
 
 const myStyle = {
@@ -8,7 +7,20 @@ const myStyle = {
 
 class MyFirstComponent extends React.Component {
     render() {
-        return (<div style={myStyle}>My First React Component!</div>)
+        const { pokemons} = this.props
+
+        return (
+            <div style={myStyle}>
+                <h1>See All The Pokemon!</h1>
+
+                <ul>
+                    {pokemons.map((pokemon) => {
+                        return <li>{pokemon.name[0].toUpperCase(0) + pokemon.name.slice(1)}</li>
+                    })}                 
+                </ul>
+            </div>
+        )
+
     }
 }
 
