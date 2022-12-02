@@ -3,7 +3,7 @@ const app = express()
 const port = 3000
 
 const fs = require('fs')
-const pokemons = require('./models/pokemons.js')
+const pokemon = require('./models/pokemon.js')
 
 app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
@@ -11,13 +11,13 @@ app.engine('jsx', require('express-react-views').createEngine())
 app.get('/', (req, res) => { })
 
 app.get('/pokemon/', (req, res) => {
-    res.render('Index', {pokemons: pokemons})
+    res.render('Index', {pokemons: pokemon})
 })
 
 app.get('/pokemon/:id', (req, res) => {
   res.render('Show',{
-    name: pokemons[req.params.id].name,
-    img: pokemons[req.params.id].img
+    name: pokemon[req.params.id].name,
+    img: pokemon[req.params.id].img
     })
 })
 app.listen(port, () => {

@@ -13,10 +13,10 @@ class MyFirstComponent extends React.Component {
         return (
             <div style={myStyle}>
                 <h1>Gotta Catch 'Em All</h1>
-                
+
                 <h2>{name[0].toUpperCase(0) + name.slice(1)}</h2>
                 <img src={`${img}.jpg`}></img>
-                
+
                 <br></br>
                 <br></br>
 
