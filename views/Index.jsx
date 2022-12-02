@@ -1,8 +1,8 @@
 const React = require('react')
 
 const myStyle = {
-    color: '#ffffff',
-    backgroundColor: '#000000',
+    color: 'blue',
+    // backgroundColor: '#000000',
 }
 
 class MyFirstComponent extends React.Component {

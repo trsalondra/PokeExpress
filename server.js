@@ -15,7 +15,10 @@ app.get('/pokemon/', (req, res) => {
 })
 
 app.get('/pokemon/:id', (req, res) => {
-  res.send(req.params.id)
+  res.render('Show',{
+    name: pokemons[req.params.id].name,
+    img: pokemons[req.params.id].img
+    })
 })
 app.listen(port, () => {
     console.log(`Listening on port ${port}`)
