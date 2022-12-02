@@ -11,7 +11,6 @@ app.engine('jsx', require('express-react-views').createEngine())
 app.get('/', (req, res) => { })
 
 app.get('/pokemon/', (req, res) => {
-    // res.send(pokemon)
     res.render('Index', {pokemons: pokemons})
 })
 
