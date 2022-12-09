@@ -74,12 +74,32 @@ app.get('/pokemon/:id', (req, res) => {
     })
   })
 
-  // res.render('Show', {
-  //   name: Pokemon[req.params.id].name,
-  //   img: Pokemon[req.params.id].img
 })
 
 
+// const manyPokemon = [
+//   {name: "bulbasaur", img: "http://img.pokemondb.net/artwork/bulbasaur"},
+//   {name: "ivysaur", img: "http://img.pokemondb.net/artwork/ivysaur"},
+//   {name: "venusaur", img: "http://img.pokemondb.net/artwork/venusaur"},
+//   {name: "charmander", img: "http://img.pokemondb.net/artwork/charmander"},
+//   {name: "charizard", img: "http://img.pokemondb.net/artwork/charizard"},
+//   {name: "squirtle", img: "http://img.pokemondb.net/artwork/squirtle"},
+//   {name: "wartortle", img: "http://img.pokemondb.net/artwork/wartortle"}
+// ]
+
+// Pokemon.insertMany(manyPokemons)
+//   // if database transaction succeeds
+//   .then((pokemon) => {
+//       console.log(pokemon)
+//   })
+//   // if database transaction fails
+//   .catch((error) => {
+//       console.log(error)
+//   })
+//   // close db connection either way
+//   .finally(() => {
+//       db.close()
+//   })
 
 //  Pokemon.updateMany({}, {$unset: {"img": ""}})
 //  // if database transaction succeeds
