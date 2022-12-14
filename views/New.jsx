@@ -1,16 +1,18 @@
-const React = require("react")
+const React = require('react')
+const DefaultLayout = require('./Default')
 
 class New extends React.Component {
+
   render() {
     return (
-      <div>
-        <h1>New Pokemon Page</h1>
+      <DefaultLayout title='New Pokemon Page'>
         <form action='/pokemon' method='POST'>
           Name: <input type='text' name='name' />
           <br />
           <input type='submit' name='' value='Create Pokemon' />
         </form>
-      </div>
+      </DefaultLayout>
+
     )
   }
 }

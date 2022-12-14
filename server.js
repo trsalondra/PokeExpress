@@ -3,11 +3,13 @@ require("dotenv").config()
 // Dependencies
 const express = require('express')
 const mongoose = require('mongoose')
+const methodOverride = require('method-override')
 const Pokemon = require('./models/pokemon.js')
 const app = express()
 const port = 3000
 
 // Middleware 
+app.use(methodOverride('_method'))
 app.use((req, res, next) => {
   console.log("I run for all routes")
   next();
@@ -40,7 +42,7 @@ app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
 
 
-// Routes
+// Index route = Show all records
 app.get('/', (req, res) => {
   res.send('Welcome to the Pokemon App!')
 })
@@ -59,6 +61,21 @@ app.get('/pokemon/new', (req, res) => {
   res.render("New");
 })
 
+// Delete - Delete this one record
+app.delete('/pokemon/:id', (req, res) => {
+  Pokemon.findByIdAndRemove(req.params.id, (err, data) => {
+    res.redirect('/pokemon');//redirect back to fruits index
+  })
+})
+
+// Update - Modifying a record
+app.put('/pokemon/:id', (req, res) => {
+  Pokemon.findByIdAndUpdate(req.params.id, req.body, (err, updatedPokemon) => {
+    console.log(updatedPokemon)
+    res.redirect(`/pokemon/${req.params.id}`) // redirecting to the show page
+  })
+})
+
 // Create - send the filled form to db and create a new record
 app.post("/pokemon", (req, res) => {
 
@@ -67,6 +84,23 @@ app.post("/pokemon", (req, res) => {
   })
 })
 
+// Edit - Get the form with the record to update
+app.get('/pokemon/:id/edit', (req, res) => {
+  Pokemon.findById(req.params.id, (err, foundPokemon) => {
+    if (!err) {
+      res.render(
+        'Edit',
+        {
+          pokemon: foundPokemon
+        }
+      )
+    } else {
+      res.send({ msg: err.message })
+    }
+  })
+})
+
+// Show route - Show me a particular record
 app.get('/pokemon/:id', (req, res) => {
   Pokemon.findById(req.params.id, (err, foundPokemon) => {
     res.render("Show", {
